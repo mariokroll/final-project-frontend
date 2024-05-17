@@ -21,6 +21,7 @@ export default function Film() {
     return (
         <div className="container" id="containerFilm">
             <div className="film-details" id="filmDetails">
+            <img src={film.images} alt={film.title} style={{width: "200px", height: "320px", marginTop: "10px"}}/>
             <h1>{film.title}</h1>
             <p>Sinopsis: {film.description}</p>
             <p>Director: {film.director}</p>
