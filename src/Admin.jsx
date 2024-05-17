@@ -40,16 +40,6 @@ export default function AdminPanel() {
         let genreValue = e.target[5].value;
         let genre = genres.filter(genre => genre.name === genreValue)[0].id;
         let image = e.target[6].value;
-        let body = JSON.stringify({
-            title: title,
-            director: director,
-            description: description,
-            year: year,
-            rating: rating,
-            genre: genre,
-            images: image
-        })
-        console.log(body)
 
         fetch('http://127.0.0.1:8000/movies/', {
             mode: 'cors',
@@ -83,13 +73,13 @@ export default function AdminPanel() {
         const title = e.target[1].value;
         const director = e.target[2].value;
         const description = e.target[3].value;
-        let year = e.target[3].value;
+        let year = e.target[4].value;
         // year must be integer
         year = parseInt(year);
-        let rating = e.target[4].value;
+        let rating = e.target[5].value;
         // rating must be float
         rating = parseFloat(rating);
-        let genreValue = e.target[5].value;
+        let genreValue = e.target[6].value;
         let genre = genres.filter(genre => genre.name === genreValue)[0].id;
         const image = e.target[7].value;
         fetch('http://127.0.0.1:8000/movies/'+id+'/', {
@@ -153,6 +143,7 @@ export default function AdminPanel() {
                     </select>
                     <input type="text" placeholder="URL de la imagen" />
                     <button type="submit">Actualizar película</button>
+                    {!correctAdmin && <p>No estás autorizado para hacer esta acción</p>}
                 </form>
             </div>
             <div className="container" id="forms-panel" style={{width: "20%"}}>
@@ -160,6 +151,7 @@ export default function AdminPanel() {
                 <form onSubmit={deleteFilm}>
                     <input type="number" placeholder="Id película" />
                     <button type="submit">Eliminar película</button>
+                    {!correctAdmin && <p>No estás autorizado para hacer esta acción</p>}
                 </form>
             </div>
             <div className="container" id="forms-panel" style={{width: "20%"}}>
@@ -175,6 +167,7 @@ export default function AdminPanel() {
                     </select>
                     <input type="text" placeholder="URL de la imagen" />
                     <button type="submit">Añadir película</button>
+                    {!correctAdmin && <p>No estás autorizado para hacer esta acción</p>}
                 </form>
         </div>
         </div>
