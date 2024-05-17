@@ -8,6 +8,7 @@ import Register from './Registro.jsx'
 import Perfil from './Perfil.jsx'
 import EditarPerfil from './EditarPerfil.jsx'
 import MakeReview from './MakeReview.jsx'
+import AdminPanel from './Admin.jsx'
 import './index.css'
 import { RouterProvider, createBrowserRouter, redirect } from 'react-router-dom'
 
@@ -43,6 +44,10 @@ const router = createBrowserRouter([{
         },
       })
     }
+  },
+  {
+    path: 'admin',
+    element: <AdminPanel />,
   },
   {
     path: 'login',
