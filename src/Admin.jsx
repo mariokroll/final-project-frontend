@@ -22,8 +22,7 @@ export default function AdminPanel() {
             }
         
         }).then(data => {
-            let dataGenres = data.map(genre => genre.name);
-            setGenres(dataGenres);
+            setGenres(data);
         })
     }, [])
 
@@ -32,10 +31,15 @@ export default function AdminPanel() {
         const title = e.target[0].value;
         const director = e.target[1].value;
         const description = e.target[2].value;
-        const year = e.target[3].value;
-        const rating = e.target[4].value;
-        const genre = e.target[5].value;
-        const image = e.target[6].value;
+        let year = e.target[3].value;
+        // year must be integer
+        year = parseInt(year);
+        let rating = e.target[4].value;
+        // rating must be float
+        rating = parseFloat(rating);
+        let genreValue = e.target[5].value;
+        let genre = genres.filter(genre => genre.name === genreValue)[0].id;
+        let image = e.target[6].value;
         let body = JSON.stringify({
             title: title,
             director: director,
@@ -79,11 +83,15 @@ export default function AdminPanel() {
         const title = e.target[1].value;
         const director = e.target[2].value;
         const description = e.target[3].value;
-        const year = e.target[4].value;
-        const rating = e.target[5].value;
-        const genre = e.target[6].value;
+        let year = e.target[3].value;
+        // year must be integer
+        year = parseInt(year);
+        let rating = e.target[4].value;
+        // rating must be float
+        rating = parseFloat(rating);
+        let genreValue = e.target[5].value;
+        let genre = genres.filter(genre => genre.name === genreValue)[0].id;
         const image = e.target[7].value;
-        console.log(e.target);
         fetch('http://127.0.0.1:8000/movies/'+id+'/', {
             mode: 'cors',
             method: 'put',
@@ -141,7 +149,7 @@ export default function AdminPanel() {
                     <input type="text" placeholder="Año" />
                     <input type="number" placeholder="Rating" min={0} max={10}/>
                     <select>
-                        {genres.map(genre => <option key={genre} value={genre}>{genre}</option>)}
+                        {genres.map(genre => genre.name).map(genre => <option key={genre} value={genre}>{genre}</option>)}
                     </select>
                     <input type="text" placeholder="URL de la imagen" />
                     <button type="submit">Actualizar película</button>
@@ -163,7 +171,7 @@ export default function AdminPanel() {
                     <input type="text" placeholder="Año" />
                     <input type="number" placeholder="Rating" min={0} max={10}/>
                     <select>
-                        {genres.map(genre => <option key={genre} value={genre}>{genre}</option>)}
+                        {genres.map(genre => genre.name).map(genre => <option key={genre} value={genre}>{genre}</option>)}
                     </select>
                     <input type="text" placeholder="URL de la imagen" />
                     <button type="submit">Añadir película</button>
