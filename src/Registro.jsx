@@ -53,7 +53,7 @@ export default function Registro() {
                             required
                             type="email"
                         />
-                        {/* ToDo#3: completa las props value y onChange para validar que coinciden los passwords */}
+
                         <TextField
                             label="Contraseña"
                             name="password"
@@ -82,7 +82,7 @@ export default function Registro() {
                         >
                             {responseError ? 'Error en el registro' : ''}
                         </Alert>
-                        {/* ToDo#4: deshabilita el botón también si los passwords no coinciden */}
+
                         <LoadingButton
                             type="submit"
                             variant="contained"
