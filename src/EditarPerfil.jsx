@@ -43,7 +43,6 @@ export default function EditarPerfil() {
                                 type="tel"
                                 defaultValue={usuario.tel}
                             />
-                            {/* ToDo#10: añade los campos necesarios para implementar el cambio de contraseña */}
                             <TextField margin="dense" size="small" fullWidth disabled={busy}
                                 label="Nueva contraseña"
                                 name="password"
