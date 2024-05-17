@@ -7,7 +7,7 @@ const Header = ({ isLoggedIn, currentPage }) => {
         <header className="header">
             <div className="logo">
                 <NavLink to="/">
-                    <img src="assets/logo.png" alt="Logo de la página" />
+                    <h1 style={{fontSize: "2em"}}>BroskisFilm</h1>
                 </NavLink>
             </div>
             <nav className="navigation">
