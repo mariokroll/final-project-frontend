@@ -16,7 +16,7 @@ export default function Perfil() {
         return <div>Cargando datos del usuario...</div>; // O manejo de errores más sofisticado
     }
 
-    function handleRecommendMovieClick() {
+    const handleRecommendMovieClick = async () => {
         fetch('http://127.0.0.1:8000/recommend/', {
             method: 'GET',
             mode: 'cors',
@@ -35,7 +35,8 @@ export default function Perfil() {
             }
             )
             .then(data => {
-                setMovieId(data.id);
+                setMovieId(data.movie);
+                navigate(`/movies/${data.movie}`);
             })
     }
 
@@ -79,9 +80,7 @@ export default function Perfil() {
                         </Button>
                     </Form>
                     <Button onClick={handleRecommendMovieClick} variant="contained" color="secondary" size="medium" sx={{ fontWeight: 'bold' }}>
-                        <NavLink to={`/movies/${movieId}`} style={{ textDecoration: "none", color: "black", width: '100%', height: '100%' }}>
                             Recomendar Película
-                        </NavLink>
                     </Button>
                 </CardActions>
             </Card>
